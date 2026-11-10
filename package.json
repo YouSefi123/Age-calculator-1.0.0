@@ -1,0 +1,58 @@
+{
+  "name": "my-first-app",
+  "productName": "my-first-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "My Electron application description",
+  "keywords": [],
+  "license": "MIT",
+  "author": {
+    "name": "Hassan"
+  },
+  "main": ".webpack/main/index.cjs",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "release": "electron-forge release",
+    "lint": "oxlint && oxfmt --check",
+    "lint:fix": "oxlint --fix && oxfmt --write",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^8.0.1",
+    "@electron-forge/maker-deb": "^8.0.1",
+    "@electron-forge/maker-rpm": "^8.0.1",
+    "@electron-forge/maker-squirrel": "^8.0.1",
+    "@electron-forge/maker-zip": "^8.0.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^8.0.1",
+    "@electron-forge/plugin-fuses": "^8.0.1",
+    "@electron-forge/plugin-webpack": "^8.0.1",
+    "@electron/fuses": "^2.1.3",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@tailwindcss/webpack": "^4.3.3",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/electron-squirrel-startup": "^1.0.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/sql.js": "^1.4.11",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "css-loader": "^6.11.0",
+    "electron": "44.9.3",
+    "fork-ts-checker-webpack-plugin": "^7.3.0",
+    "node-loader": "^2.1.0",
+    "oxfmt": "^0.41.0",
+    "oxlint": "^1.89.0",
+    "postcss-loader": "^8.2.1",
+    "style-loader": "^3.3.4",
+    "tailwindcss": "^4.3.3",
+    "ts-loader": "^9.6.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "electron-squirrel-startup": "^1.0.1",
+    "react-dom": "^19.3.1",
+    "sql.js": "^1.15.1"
+  }
+}
