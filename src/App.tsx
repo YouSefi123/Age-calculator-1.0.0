@@ -1,171 +1,48 @@
 import React, { useState } from "react";
 
 export default function App() {
-  const [display, setDisplay] = useState("");
-  const [operator, setOperator] = useState("");
-  const [first, setFirst] = useState("");
+  const [birthdayDate, setBirthdayDate] = useState("");
+  const [show, setShow] = useState(true);
+  const [showFinal, setShowFinal] = useState("");
 
-  function handlePlus() {
-    setFirst(display);
-    setDisplay("");
-    setOperator("+");
-  }
+  const year = new Date();
+  const result = year.getFullYear();
 
-  function handleMinus() {
-    setFirst(display);
-    setDisplay("");
-    setOperator("-");
-  }
+  const myAge = new Date(birthdayDate);
+  const oldAge = myAge.getFullYear();
 
-  function handleMultiple() {
-    setFirst(display);
-    setDisplay("");
-    setOperator("*");
-  }
-
-  function handleDevide() {
-    setFirst(display);
-    setDisplay("");
-    setOperator("/");
-  }
-
-  function handleEqual() {
-    if (operator === "+") {
-      const result = Number(first) + Number(display);
-      setDisplay(String(result));
-    } else if (operator === "-") {
-      const result = Number(first) - Number(display);
-      setDisplay(String(result));
-    } else if (operator === "*") {
-      const result = Number(first) * Number(display);
-      setDisplay(String(result));
-    } else if (operator === "/") {
-      const result = Number(first) / Number(display);
-      setDisplay(String(result));
-    }
+  function handleCalc() {
+    setShow(false);
+    const total = result - Number(oldAge);
+    setShowFinal(String(total));
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950 p-5">
-      <div className="w-full max-w-sm rounded-3xl border border-white/10 bg-slate-800/80 p-6 shadow-2xl shadow-black/40">
-        <h2 className="mb-6 text-center text-2xl font-bold tracking-wider text-white">
-          Calculator
-        </h2>
+    <div className="flex bg-gray-500 min-h-screen flex-col justify-center items-center">
+      <div className="text-center bg-white p-20 rounded-2xl space-y-4">
+        <h1 className="text-gray-500 text-4xl font-bold">Age Calculation</h1>
 
-        <input
-          type="text"
-          placeholder="0"
-          value={display}
-          onChange={(e) => setDisplay(e.target.value)}
-          className="mb-6 h-20 w-full rounded-2xl border border-slate-700 bg-slate-950 px-5 text-right text-4xl font-semibold text-white outline-none transition focus:border-indigo-500"
-        />
+        <p className="text-start">Enter your date of birth:</p>
 
-        <div className="grid grid-cols-4 gap-3 text-white">
-          <button
-            onClick={() => setDisplay(display + "7")}
-            className="calc-btn"
-          >
-            7
-          </button>
-          <button
-            onClick={() => setDisplay(display + "8")}
-            className="calc-btn"
-          >
-            8
-          </button>
-          <button
-            onClick={() => setDisplay(display + "9")}
-            className="calc-btn"
-          >
-            9
-          </button>
-          <button
-            onClick={handlePlus}
-            className="calc-btn bg-indigo-600 hover:bg-indigo-500"
-          >
-            +
-          </button>
-
-          <button
-            onClick={() => setDisplay(display + "4")}
-            className="calc-btn"
-          >
-            4
-          </button>
-          <button
-            onClick={() => setDisplay(display + "5")}
-            className="calc-btn"
-          >
-            5
-          </button>
-          <button
-            onClick={() => setDisplay(display + "6")}
-            className="calc-btn"
-          >
-            6
-          </button>
-          <button
-            onClick={handleMinus}
-            className="calc-btn bg-indigo-600 hover:bg-indigo-500"
-          >
-            -
-          </button>
-
-          <button
-            onClick={() => setDisplay(display + "1")}
-            className="calc-btn"
-          >
-            1
-          </button>
-          <button
-            onClick={() => setDisplay(display + "2")}
-            className="calc-btn"
-          >
-            2
-          </button>
-          <button
-            onClick={() => setDisplay(display + "3")}
-            className="calc-btn"
-          >
-            3
-          </button>
-          <button
-            onClick={handleMultiple}
-            className="calc-btn bg-indigo-600 hover:bg-indigo-500"
-          >
-            ×
-          </button>
-
-          <button
-            onClick={() => setDisplay(display + "0")}
-            className="calc-btn"
-          >
-            0
-          </button>
-          <button
-            onClick={handleDevide}
-            className="calc-btn bg-indigo-600 hover:bg-indigo-500"
-          >
-            ÷
-          </button>
-          <button
-            onClick={() => setDisplay("")}
-            className="calc-btn bg-rose-600 hover:bg-rose-500"
-          >
-            C
-          </button>
-          <button
-            onClick={handleEqual}
-            className="calc-btn bg-purple-600 hover:bg-purple-500"
-          >
-            =
-          </button>
+        <div className="flex flex-col">
+          <div className="">
+            <input
+              type="date"
+              value={birthdayDate}
+              onChange={(e) => setBirthdayDate(e.target.value)}
+              className="border rounded-sm w-70 p-2"
+            />
+          </div>
+          <div className="text-start bg-blue-400 mt-4 text-white w-fit p-2 rounded-sm">
+            <button onClick={handleCalc}>Calculate Age</button>
+          </div>
         </div>
 
-        <p className="mt-6 text-center text-xs text-slate-500">
-          Designed By Yousefi
-        </p>
+        {show && (
+          <h2 className="text-red-500 font-semibold">No Date entered!</h2>
+        )}
+        <h1>Your age: {showFinal}</h1>
       </div>
-    </main>
+    </div>
   );
 }
